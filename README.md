@@ -16,11 +16,11 @@ Resulting list sorted in descending order = [8, 6, 5, 3, 2]
 
 **Time Complexity Analysis**
 
-Best-case: A best-case scenario is when the list of N numbers has been evenly divided (total n is even) or close to evenly divided (total n is odd) while the value of the pivot is a middle value. The sub-arrays are divided into size of log2 n which means the list has been cut in half to solve the problem. Therefore, the best-case is O(n log n), where n is the number of elements in the list and log n is the half of size N.  
+Best-case: A best-case scenario is when the list of N numbers has been evenly partitioned in each recursive step. In this case the pivot selected will be exactly in the middle. Because of the even partitioning, the data size for the next recursive calls are cut in half giving us a perfect "log n" time complexity to sort the data.
 
-Average-case: An average-case scenario is when the list has been divided by 3/4 and 1/4 because the pivot lies between 75% and 25% of the list. This leads to an unbalanced division, however still using a log4/3 and on average the processing time is O(n log n).  
+Worst-case: A worst-case scenario is when the pivot is either the smallest or the largest value that is selected. This causes the partition to be very badly uneven where either the left or the right partition will have just one item. This causes the data size for each recursive step to be of size n-1, n-2 and so giving us a total of O(n^2) quadratic time complexity.
 
-Worst-case: A worst-case scenario is when the list has been divided in an unbalanced way because the pivot occours at the extreme left or extreme right of the list. This leads one sub-array being larger than the other at every recursive call leading to n - 1, n - 2 and so on. This makes the problem longer to solve, hence the worst-case is O(n^2) because at every call, n is being sorted.
+Average-case: Since we don't make any assumptions about the data, it's not easy to select the pivot which will give us the best-case time complexity all the time. But to come close to the best case, we can select a pivot at random which with high probability can give us a partition which is closer to being even but maybe not equally even, but will not always give the worst case scenario. This is the average case. In this case, using a random pivot selection in each recursive step, the pivot will lie b/w 25% and 75% of the list resulting in a close to even partitioning. This also leads to an unbalanced division but can still yield a good log of N where N is still better than the worst case.
 
 ## How to run locally
 
@@ -29,6 +29,10 @@ To run the QuickSort for descending order, use the following command.
 ```bash
 
 >> python quick_sort_desc_order.py
+
+Enter a list of numbers:
+
+5 3 6 8 2
 
 [8, 6, 5, 3, 2]
 
