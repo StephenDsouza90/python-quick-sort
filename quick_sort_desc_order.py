@@ -1,64 +1,64 @@
+import random
+
+
+def partition(arr, startIndex, endIndex):
+    """
+    The function internally splits a list of numbers into two 
+    partitions by using a pivot. In this case, the pivot is 
+    selected at random from the given items in the list. 
+    
+    The split is done such that all the numbers greater than the 
+    pivot are moved to the left side of the pivot and 
+    the numbers less than the pivot are moved to the right side 
+    of the pivot. 
+    
+    This is done with the help of a left and right pointers that 
+    scans elements and if it meets the above condition, 
+    it re-positions these elements to the left or right accordingly.
+
+    :param arr: List of remaining numbers to be sorted.
+    :param startIndex: Left pointer i.e. starting index.
+    :param endIndex: Right pointer i.e. ending index.
+    :return rightIndex: Index used for creating sub-arrays.
+    """
+
+    pivot = random.choice(arr)
+    leftIndex = startIndex - 1
+    rightIndex = endIndex + 1
+
+    while True:
+        leftIndex += 1
+        while arr[leftIndex] > pivot:
+            leftIndex += 1
+
+        rightIndex -= 1
+        while arr[rightIndex] < pivot:
+            rightIndex -= 1
+
+        if leftIndex >= rightIndex:
+            return rightIndex
+
+        arr[leftIndex], arr[rightIndex] = arr[rightIndex], arr[leftIndex]
+
+
 def quickSortDescOrder(arr):
     """
     This quick sort function takes an unsorted list of numbers
-    and sorts it in a descending order.
+    and sorts it in descending order in-place.
 
     :param arr: A list of unsorted numbers.
-    :return arr: A list of sorted numbers in decending order. 
+    :return: The same list sorted in decending order.     
     """
-
-    def partition(arr, startIndex, endIndex):
-        """
-        This method within the function splits the list 
-        into two halfs by using a pivot. The pivot is 
-        determined by using a middle number within the list.
-
-        All numbers greater than the pivot are moved to
-        the right of the list and all numbers less than
-        the pivot are moved to the left of the list.
-
-        At every loop, the index from the left side increaments
-        and the index from the right side decrements.
-        Once the left side index is equal to or greater than 
-        the right side index, the while loop is exited.
-
-        :param arr: List of unsorted numbers to be splited.
-        :param startIndex: Index from the left side - starting index.
-        :param endIndex: Index from the right side - ending index.
-        :return rightIndex: Index used to create a partition between left hand side and right hand side.
-        """
-
-        pivot = arr[(startIndex + endIndex) // 2]
-        leftIndex = startIndex - 1
-        rightIndex = endIndex + 1
-
-        while True:
-            leftIndex += 1
-            while arr[leftIndex] > pivot:
-                leftIndex += 1
-
-            rightIndex -= 1
-            while arr[rightIndex] < pivot:
-                rightIndex -= 1
-
-            if leftIndex >= rightIndex:
-                return rightIndex
-
-            arr[leftIndex], arr[rightIndex] = arr[rightIndex], arr[leftIndex]
 
     def _quickSort(items, startIndex, endIndex):
         """
-        This method within the function splits the list of numbers
-        using the partition method to create two subsets of the list.
+        This function repeats recursively for each new partition 
+        that's created at the left and right until no more partitions 
+        can be made. At this point the list is then sorted.
 
-        The two subsets are then sorted in the same manner, where the 
-        left hand side numbers are split from starting index till the split
-        index and right hand side numbers are split from the an increament of 
-        the split index to the end index.
-
-        :param items: Numbers to be sorted.
-        :param startIndex: Index from the left side - starting index.
-        :param endIndex: Index from the right side - ending index.
+        :param items: List of remaining numbers to be sorted.
+        :param startIndex: Index from the left side i.e. starting index.
+        :param endIndex: Index from the right side i.e. ending index.
         """
 
         if startIndex < endIndex:
@@ -72,7 +72,7 @@ def quickSortDescOrder(arr):
 
 
 def main():
-    arr = [5, 3, 6, 8, 2]
+    arr = list(map(int, input("\nEnter a list of numbers:\n").split()))
     quickSortDescOrder(arr)
     print(arr)
 
