@@ -17,6 +17,6 @@ class Tests(object):
         nt.assert_equals(expected, actual) 
 
         # Testing when a list is sorted by descending order
-        actual = quickSortDescOrder([5, 3, 6, 8, 2])
+        actual = quickSortDescOrder([8, 6, 5, 3, 2])
         expected = [8, 6, 5, 3, 2]
         nt.assert_equals(expected, actual)       
