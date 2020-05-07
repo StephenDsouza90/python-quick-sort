@@ -17,8 +17,8 @@ def partition(arr, startIndex, endIndex):
     it re-positions these elements to the left or right accordingly.
 
     :param arr: List of remaining numbers to be sorted.
-    :param startIndex: Left pointer i.e. starting index.
-    :param endIndex: Right pointer i.e. ending index.
+    :param startIndex: Starting index of scan.
+    :param endIndex: Ending index of scan.
     :return rightIndex: Index used for creating sub-arrays.
     """
 
