@@ -47,7 +47,7 @@ def quickSortDescOrder(arr):
     and sorts it in descending order in-place.
 
     :param arr: A list of unsorted numbers.
-    :return: The same list sorted in decending order.     
+    :return arr: The same list sorted in decending order.     
     """
 
     def _quickSort(items, startIndex, endIndex):
