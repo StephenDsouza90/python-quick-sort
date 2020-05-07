@@ -20,7 +20,7 @@ Best-case: A best-case scenario is when the list of N numbers has been evenly pa
 
 Worst-case: A worst-case scenario is when the pivot is either the smallest or the largest value that is selected. This causes the partition to be very badly uneven where either the left or the right partition will have just one item. This causes the data size for each recursive step to be of size n-1, n-2 and so giving us a total of O(n^2) quadratic time complexity.
 
-Average-case: Since we don't make any assumptions about the data, it's not easy to select the pivot which will give us the best-case time complexity all the time. But to come close to the best case, we can select a pivot at random which with high probability can give us a partition which is closer to being even but maybe not equally even, but will not always give the worst case scenario. This is the average case. In this case, using a random pivot selection in each recursive step, the pivot will lie b/w 25% and 75% of the list resulting in a close to even partitioning. This also leads to an unbalanced division but can still yield a good log of N where N is still better than the worst case.
+Average-case: In this case, a random pivot selection would give us partitions close to a balanced one (ie. it should split the elements with at least 25% and at most 75% on each side) which is still better than the worst case scenario and this would lead to a time complexity of O(n log n) where for every recursive step, n < n-1 and the list would only need to be split at most log 4/3 n times before the list size reaches 1.
 
 ## How to run locally
 
